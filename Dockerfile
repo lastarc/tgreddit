@@ -33,7 +33,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
 # Step 5: Create the final image with binary and deps
 FROM debian:bookworm-slim
 WORKDIR /app
-COPY --from=builder /app/target/*/release/tgreddit .
+COPY --from=builder /app/target/release/tgreddit .
 RUN apt-get update && apt-get install -y \
   curl python3 ffmpeg \
   && rm -rf /var/lib/apt/lists/*
